@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+source env.zsh
+
+install() {
+  case $(_os) in
+    macos) brew install rustup ;;
+    arch)  pacaur --needed --noconfirm -S rustup ;;
+  esac
+  rustup install stable
+  rustup component add rust-src
+  cargo install racer
+}
+
+update() {
+  rustup update
+}
+
+# link() {}
+
+# clean() {}
+
+init "$@"

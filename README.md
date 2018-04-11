@@ -1,66 +1,75 @@
-# Henrik's dotfiles
-[![MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+# Mein dotfiles
 
-<img src="http://i.giphy.com/ZHlGzvZb130nm.gif" align="right" />
+A tidy `$HOME` is a tidy mind.
 
-My dotfiles. Fuel for my madness. Designed for MacOS, Arch Linux and the various
-debian-based boxes I frequently ssh into.
+![Oct-2017 Screenshot of Arch Linux](assets/screenshots/OCT2017.png)
 
-It is organized into topics, some with their own READMEs. Check them out for more
-targeted information. The `./boostrap` script is used to install and update them.
+These are my dotfiles, designed primarily for Arch Linux, MacOS and debian. They
+are my specific breed of madness, split into 2-level topics (e.g. `shell/zsh`)
+that strive for minimum `$HOME` presence (adhering to XDG standards where
+possible).
 
-## Bootstrap
++ wm: bspwm
++ shell: zsh
++ font: kakwafont
++ bar: polybar
 
-`bootstrap` is my idempotent dotfile deployment script.
+## Quick start
 
-e.g. `./bootstrap os/arch shell/{zsh,tmux} dev/python`
+`bash <(curl -s https://raw.githubusercontent.com/hlissner/dotfiles/master/bootstrap.sh)`
+
+## Overview
+
+```sh
+# general
+bin/       # global scripts
+assets/    # wallpapers, sounds, screenshots, etc
+
+# categories
+base/      # provisions my system with the bare essentials
+dev/       # relevant to software development & programming in general
+editor/    # configuration for my text editors
+misc/      # for various apps & tools
+shell/     # shell utilities, including zsh + bash
+```
+
+## Dotfile management
 
 ```
-Usage: bootstrap [-iuldypLSU] [topic1[ topic2[ ...]]]
+Usage: deploy [-acdlLit] [TOPIC...]
 
-Options:
-  -i  Don't run install scripts
-  -u  Don't run update scripts
-  -l  Don't symlink dotfiles
-  -d  Do a dry run (only output commands, no changes)
-  -y  Overwrite conflicts (no prompts)
-  -p  Prompt on file conflict (to overwrite)
-  -L  Refresh links; the same as -ui
-  -S  Server mode; only install the bare minimum
-  -U  Update mode; run update scripts only
+  -a   Target all enabled topics (ignores TOPIC args)
+  -c   Afterwards, remove dead symlinks & empty dot-directories in $HOME.
+       Can be used alone.
+  -d   Unlink and run `./_init clean` for topic(s)
+  -l   Only relink topic(s) (implies -i)
+  -L   List enabled topics
+  -i   Inhibit install/update/clean init scripts
+  -t   Do a test run; do not actually do anything
 ```
 
-Here's a simplified break down of what it does:
+e.g.
++ `deploy base/arch shell/{zsh,tmux}`: enables base/arch, shell/zsh & shell/tmux
++ `deploy -d shell/zsh`: disables shell/zsh & cleans up after it
++ `deploy -l shell/zsh`: refresh links for shell/zsh (inhibits init script)
++ `deploy -l`: relink all enabled topics
++ `deploy -L`: list all enabled topics
 
-```bash
-# 1. Symlinks dotfiles to $HOME
-ln -sfv $topic/.* ~/
-ln -sfv $topic/.{config,local}/* ~/.{config,local}/
+Here's a breakdown of what the script does:
 
-# 2. Track enabled topics in ~/.dotfiles/.enabled.d.
-# 3. If topic is enabled, run its update script. Otherwise, run its install script
-if [[ -e ~/.dotfiles/.enabled.d/$topic ]]; then
-    $topic/update
+``` sh
+cd $topic
+if [[ -L $DOTFILES_DATA/${topic//\//.}.topic ]]; then
+    ./_init update
 else
-    ln -sfv $topic ~/.dotfiles/.enabled.d/
-    $topic/install
+    ln -sfv $DOTFILES/$topic $DOTFILES_DATA/${topic//\//.}.topic
+
+    ./_init install
+    ./_init link
 fi
 ```
 
-## Clean
+## Relevant projects
 
-`clean` will delete broken symlinks in `$HOME`, and can "disable" all topics by removing
-their symlinks in `.enabled.d/`.
-
-```
-Usage: clean [-du]
-
-Options:
-  -d  Do a dry run (only output commands, no changes)
-  -u  Uninstall all enabled topics
-```
-
-## Other Relevant Configs
-
-+ [Vim](https://github.com/hlissner/.vim) (pulled in by the `editor/vim` topic)
-+ [Emacs](https://github.com/hlissner/.emacs.d) (pulled in by the `editor/emacs` topic)
++ [DOOM Emacs](https://github.com/hlissner/doom-emacs) (pulled by `editor/emacs`)
++ [My vim config](https://github.com/hlissner/.vim) (pulled by `editor/{neo,}vim`)

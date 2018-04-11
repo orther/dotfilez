@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-query=$(urlencode <<< "$*")
-echo "Opening https://duckduckgo.com/?q=$query"
-open "https://duckduckgo.com/?q=$query"

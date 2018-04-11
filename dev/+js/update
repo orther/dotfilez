@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-npm=$(which npm)
-[[ -w $npm ]] || npm="sudo $npm"
-$npm -g update
