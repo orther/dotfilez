@@ -1,6 +1,6 @@
 [user]
-	name = Henrik Lissner
-	email = henrik@lissner.net
+	name = Brandon Orther
+	email = brandon@uptrend.tech
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -8,7 +8,7 @@
 [color]
 	ui = auto
 [github]
-	user = hlissner
+	user = orther
 [rebase]
 	autosquash = true
 [push]

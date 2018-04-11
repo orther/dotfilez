@@ -4,7 +4,7 @@
 # It is NOT supposed to be edited manually. Edit your personal
 # gtkrc file instead (/home/hlissner/.config/gimp/gtkrc).
 
-include "/home/hlissner/.config/gimp/themes/Gimp-CC-Theme-Darker/gtkrc"
-include "/home/hlissner/.config/gimp/gtkrc"
+include "/home/orther/.config/gimp/themes/Gimp-CC-Theme-Darker/gtkrc"
+include "/home/orther/.config/gimp/gtkrc"
 
 # end of themerc

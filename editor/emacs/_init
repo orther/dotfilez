@@ -10,7 +10,7 @@ install() {
     debian) sudo apt-get install -y make emacs ;;
   esac
 
-  _ensure_repo hlissner/.emacs.d ~/.emacs.d && \
+  _ensure_repo orther/doom-emacs ~/.emacs.d && \
     cd ~/.emacs.d \
     && YES=1 make install
   _ensure_repo cask/cask ~/.emacs.d/cask
