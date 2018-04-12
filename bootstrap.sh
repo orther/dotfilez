@@ -5,7 +5,7 @@
 # Installs zsh & git, then clones this repo to ~/.dotfiles. This script is
 # intended to be run remotely, via curl:
 #
-# bash <(curl -s https://raw.githubusercontent.com/orther/dotfiles/master/bootstrap.sh)
+# bash <(curl -s https://raw.githubusercontent.com/orther/dotfilez/master/bootstrap.sh)
 
 export DOTFILES=~/.dotfiles
 set -e
