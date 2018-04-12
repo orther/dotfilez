@@ -13,11 +13,11 @@ install() {
   # Core essentials
   sudo pacman --needed --noconfirm -S wget git curl tree rsync dnsutils
 
-  # Set up trizen (AUR helper)
-  if ! _is_callable trizen; then
+  # Set up yay (AUR helper)
+  if ! _is_callable yay; then
     TEMP="$(mktemp -d)"
     pushd $TEMP
-    for pkg in cower trizen; do
+    for pkg in cower yay; do
       if [[ ! "$(pacman -Qs $pkg)" ]]; then
         curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$pkg && \
           makepkg PKGBUILD --needed --noconfirm --skippgpcheck -sri
@@ -26,18 +26,18 @@ install() {
     popd
     rm -rf $TEMP
 
-    if ! _is_callable trizen; then
-      >&2 echo "Trizen was not successfully installed"
+    if ! _is_callable yay; then
+      >&2 echo "Yay was not successfully installed"
       return 3
     fi
   fi
 
-  trizen --needed --noconfirm --noedit -S ripgrep the_silver_searcher bc cronie
+  yay --needed --noconfirm --noedit -S ripgrep the_silver_searcher bc cronie
   sudo systemctl enable cronie
 }
 
 update() {
-  _is_callable trizen && local pac=trizen
+  _is_callable yay && local pac=trizen
   ${pac:-sudo pacman} -Syu --noconfirm
 }
 
