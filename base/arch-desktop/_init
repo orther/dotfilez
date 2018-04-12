@@ -8,12 +8,12 @@ install() {
   elif ! sudo pacman -Syu --noconfirm; then
     >&2 echo "Could not update pacman"
     return 2
-  elif ! _is_callable pacaur; then
-    >&2 echo "Could not find pacaur"
+  elif ! _is_callable trizen; then
+    >&2 echo "Could not find trizen"
     return 3
   fi
 
-  pacaur --needed --noconfirm --noedit -S \
+  trizen --needed --noconfirm --noedit -S \
     xorg-server xorg-xinit xorg-xlsfonts xorg-xfd xdotool \
     lightdm lightdm-mini-greeter \
     bspwm sxhkd compton dunst xcb-proto polybar libnotify \

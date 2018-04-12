@@ -6,10 +6,10 @@ alias jc=journalctl
 alias ssc='sudo systemctl'
 alias ufw='sudo ufw'
 
-alias pac=pacaur
-alias pacu='pacaur -Syu'   # upgrade
-alias pacc='pacaur -Sc'    # clean pacman
-alias paco='pacaur -Qtdq'  # orphaned packages
+alias pac=trizen
+alias pacu='trizen -Syu'   # upgrade
+alias pacc='trizen -Sc'    # clean pacman
+alias paco='trizen -Qtdq'  # orphaned packages
 
 alias reboot='sudo systemctl reboot'
 alias shutdown='sudo systemctl poweroff'
