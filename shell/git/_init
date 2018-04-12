@@ -5,7 +5,7 @@ GIT_DIR="$XDG_CONFIG_HOME/git"
 install() {
   case $(_os) in
     macos)  brew install git git-lfs hub diff-so-fancy git-standup git-extras ;;
-    arch)   yay --needed --noconfirm --noedit -S git hub git-lfs diff-so-fancy git-standup-git git-extras ;;
+    arch)   aurman --needed --noconfirm --noedit -S git hub git-lfs diff-so-fancy git-standup-git git-extras ;;
     debian)
       sudo apt-get install -y git
       # Install hub

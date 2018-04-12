@@ -8,12 +8,12 @@ install() {
   elif ! sudo pacman -Syu --noconfirm; then
     >&2 echo "Could not update pacman"
     return 2
-  elif ! _is_callable yay; then
-    >&2 echo "Could not find yay"
+  elif ! _is_callable aurman; then
+    >&2 echo "Could not find aurman"
     return 3
   fi
 
-  yay --needed --noconfirm --noedit -S \
+  aurman --needed --noconfirm --noedit -S \
     xorg-server xorg-xinit xorg-xlsfonts xorg-xfd xdotool \
     lightdm lightdm-mini-greeter \
     bspwm sxhkd compton dunst xcb-proto polybar libnotify \

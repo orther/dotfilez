@@ -7,9 +7,9 @@ alias ssc='sudo systemctl'
 alias ufw='sudo ufw'
 
 alias pac=trizen
-alias pacu='yay -Syu'   # upgrade
-alias pacc='yay -Sc'    # clean pacman
-alias paco='yay -Qtdq'  # orphaned packages
+alias pacu='aurman -Syu'   # upgrade
+alias pacc='aurman -Sc'    # clean pacman
+alias paco='aurman -Qtdq'  # orphaned packages
 
 alias reboot='sudo systemctl reboot'
 alias shutdown='sudo systemctl poweroff'
