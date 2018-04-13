@@ -95,9 +95,9 @@ URxvt*.url-launcher:           firefox
 URxvt.clipboard.autocopy:      true
 
 ! URxvt*.font:                   xft:kakwa kakwafont:pixelsize=12
-! urxvt-scratch.font:            xft:Misc Tamsyn:pixelsize=16
-! urxvt-fuzzy.font:              xft:Misc Tamsyn:pixelsize=18
-! urxvt-fuzzy.boldFont:          xft:Misc Tamsyn:pixelsize=18
+! urxvt-scratch.font:            xft:Misc Tamzen:pixelsize=16
+! urxvt-fuzzy.font:              xft:Misc Tamzen:pixelsize=18
+! urxvt-fuzzy.boldFont:          xft:Misc Tamzen:pixelsize=18
 ! urxvt-fuzzy.lineSpace:         4
 
 urxvt-stream.lineSpace:        0
